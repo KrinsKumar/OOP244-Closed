@@ -1,0 +1,8 @@
+//Full Name : Krinskumar Bhaveshkumar Vaghasia
+//Student ID# : 169722212
+//Email : kvaghasia@myseneca.ca
+//Date : 18-Sept=2022
+
+#Topics learned.
+There are a lot of topics that I went through in the second week of OOP, but now I can confidently say that I can handle external files much much efficiently than I was able to a week ago, and  I learned a lot about the language C++ and how it differed from c, Functions like cin and cout makes our life easier and now I can't wait to learn objects in c++.
+In this workshop, I learned how different modules worked and how they are linked together after they are compiled. I was confused about the ifndef keyword when they were first used in the assignments in IPC but now I know their syntax and behavior and also the objective of their use. I had a lot of linking errors in that part, because I declared some global variables in the header files and did some namespace typos. Workshop part 2 was easy for me because the topics from ipc were fresh in my mind, SInce the concept of modules were new to me, I Took some time to grasp the concepts but now I will have no difficulties moving forward with using different modules in my upcoming workshops.

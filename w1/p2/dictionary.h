@@ -1,6 +1,9 @@
 #ifndef SDDS_DICTIONARY_H 
 #define SDDS_DICTIONARY_H
-
+//Full Name : Krinskumar Bhaveshkumar Vaghasia
+//Student ID# : 169722212
+//Email : kvaghasia@myseneca.ca
+//Date : 18-Sept=2022
 namespace sdds 
 {
 	struct word
@@ -47,6 +50,10 @@ namespace sdds
     /// <param name="definition">The new definition.</param>
     /// <returns></returns>
     int UpdateDefinition(const char* word, const char* type, const char* definition);
+
+	void search_print(const char* word);
+
+	void add_word(const char* word, const char* type, const char* definition);
 }
 
 #endif

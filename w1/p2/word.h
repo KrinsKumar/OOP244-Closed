@@ -1,8 +1,12 @@
 #ifndef SDDS_WORDS_H 
 #define SDDS_WORDS_H 
-
+//Full Name : Krinskumar Bhaveshkumar Vaghasia
+//Student ID# : 169722212
+//Email : kvaghasia@myseneca.ca
+//Date : 18-Sept=2022
 namespace sdds 
 {
+
 	/// <summary>
 	/// Search in the dictionary for the word and display all the definitions found.
 	/// 

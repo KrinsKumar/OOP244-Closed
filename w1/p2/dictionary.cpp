@@ -1,5 +1,6 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include <iostream>
+#include <cstring>
 #include "dictionary.h"
 #include "word.h"
 
@@ -13,7 +14,7 @@ namespace sdds
 
     int LoadDictionary(const char* filename)
     {
-		dictionary dic = {0 , NULL};
+		dictionary dic = {0 , 0};
 		int count_word = 0;    // To count the number of words scanned from the dictionary
 		int count_definition;   // To count the number of definitions scanned 
         
@@ -31,7 +32,6 @@ namespace sdds
 				int i = 0;    // for forLoop
 				int flag_word = 0;    // For words loop
 				int flag_definition = 0;    // For definations loops
-				int flag_type = 0;
 				count_definition = 0;
 
 				while (flag_word == 0)    // WORD loop
@@ -49,8 +49,8 @@ namespace sdds
 
 				while (flag_definition == 0)    // Loop to scan all the definations in the string 
 				{
-					char defi[64] = {NULL};    // Temp string to store the data
-					char defi2[64] = {NULL};    // Another string to store the data
+					char defi[64] = {0};    // Temp string to store the data
+					char defi2[64] = {0};    // Another string to store the data
 					int eof = 0;    // Checks for end of file
 
 					if (fgets(scan_definition, 1024, dict) == NULL)
@@ -186,11 +186,7 @@ namespace sdds
 		while (flag_search == 0)
 		{
 
-			if (i == global_dict.m_number_of_words)
-			{
-				cout << "NOT FOUND : word [" << word << "] is not in the dictionary.\n";
-				flag_search = 1;
-			}
+			
 
 			if (strcmp(global_dict.m_word_list[i].m_word, word) == 0)
 			{
@@ -204,6 +200,10 @@ namespace sdds
 					count++;
 				}
 
+				flag_search = 1;
+			}else if (i == global_dict.m_number_of_words)
+			{
+				cout << "NOT FOUND: word [" << word << "] is not in the dictionary.\n";
 				flag_search = 1;
 			}
 
