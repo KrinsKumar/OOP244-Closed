@@ -20,6 +20,7 @@ namespace sdds
 		word m_word_list[100];
 	};
 
+
     /// <summary>
     /// Load from a file a set of words with their definition.  Any previous
     ///   existing dictionary is discarded, regardless of the result of the load.
@@ -51,9 +52,15 @@ namespace sdds
     /// <returns></returns>
     int UpdateDefinition(const char* word, const char* type, const char* definition);
 
-	void search_print(const char* word);
 
-	void add_word(const char* word, const char* type, const char* definition);
+
+	// Student defined funciton (defined at the end of the dictionary.cpp file)
+	// Removes the '\n' from the end of line
+	void removeEndOfLine(char word[], int i);
+
+	dictionary& getGlobal(void);
+
+	void sendGlobal(dictionary current);
 }
 
 #endif
