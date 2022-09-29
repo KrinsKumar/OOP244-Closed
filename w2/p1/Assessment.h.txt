@@ -1,0 +1,98 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include <cstdio>
+#include "Assessment.h"
+#include "Utils.h"
+#include <iostream>
+
+using namespace std;
+
+namespace sdds 
+{ 
+	// Reads the fist integer in the first line of the code.
+	bool read(int& value, FILE* fptr)
+	{
+		bool result = false;
+		if (fscanf(fptr, "%d\n", &value) == 1)    // Scan the integer and stores it in value.
+		{
+			result = true;
+		}
+		return result;
+	}
+
+	bool read(double& value, FILE* fptr)
+	{
+		bool result = false;
+		if (fscanf(fptr, "%lf", &value) == 1)   // Scan the integer and stores it in value.
+		{
+			result = true;
+		}
+		return result;
+	}
+
+	bool read(char* cstr, FILE* fptr)
+	{
+		if(fscanf(fptr, ",%60[^\n]\n", cstr) == 1)    // Scans the pure string and stores it.
+			return true;
+		else 
+			return false;
+	}
+
+	bool read(Assessment& asmnt, FILE* fptr)
+	{
+		double grades = 0;    // Temp variable.
+		char subject[61]{};    // Temp string.
+		bool flag = true;    // For return statement
+		int length;    // To store the length of the scanned string
+
+		if (read(grades, fptr) && read(subject, fptr))
+		{
+			
+			length = strlen(subject);
+			asmnt.m_mark = new double;    // Double DMA
+			*asmnt.m_mark = grades;
+			asmnt.m_title = new char[length + 1];    // String DMA
+			strcpy(asmnt.m_title,subject);
+			
+		}
+		else {
+			flag = false;
+		}
+		return flag;
+	}
+
+	void freeMem(Assessment*& aptr, int size)
+	{
+		for (int i = 0; i < size; i++)
+		{
+			delete aptr[i].m_mark;
+			delete[] aptr[i].m_title;
+		}
+		delete[] aptr;
+	}
+
+	int read(Assessment*& aptr, FILE* fptr)
+	{
+		int readGoal;    // Scanned number of lines
+		int readCount = 0;    // Actual number od scanned line
+		read(readGoal, fptr); 
+		aptr = new Assessment[readGoal]; // DMA ARRAY OF STRUCTURES
+
+		while (true) 
+		{
+			if (read(aptr[readCount], fptr))
+			{
+				readCount++;
+			}
+			else 
+			{
+				if (readGoal != readCount)
+				{
+					freeMem(aptr, readCount);
+				}
+
+				return readGoal;
+			}
+		}
+	}
+	
+}
