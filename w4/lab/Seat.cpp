@@ -1,6 +1,11 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include "Seat.h"
 #include "Utils.h"
+//Full Name : Krinskumar Bhaveshkumar Vaghasia
+//Student ID# : 169722212
+//Email : kvaghasia@myseneca.ca
+//Date : 06-Oct-2022
+//I have done all the coding by myself and only copied the code that my professor provided to complete my workshops and assignments.
 namespace sdds {
 
 	bool Seat::validate(int row, char letter)const {
@@ -106,8 +111,7 @@ namespace sdds {
 				coutRef.width(40);
 				coutRef.fill('.');
 				coutRef.setf(std::ios::left);
-				if (m_name[0] == '\n') coutRef << m_name[1];
-				else coutRef << m_name;
+				coutRef << m_name;
 				coutRef.unsetf(std::ios::left);
 				coutRef.fill(' ');
 			}
@@ -139,6 +143,7 @@ namespace sdds {
 				set(row, letter);
 			}
 		}
+		cinRef.ignore(1000, '\n');
 		return cinRef;
 	}
 }
