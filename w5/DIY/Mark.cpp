@@ -1,3 +1,8 @@
+//Full Name : Krinskumar Bhaveshkumar Vaghasia
+//Student ID# : 169722212
+//Email : kvaghasia@myseneca.ca
+//Date : 16-Oct-2022
+//I have done all the coding by myself and only copied the code that my professor provided to complete my workshops and assignments.
 #include "Mark.h"
 
 namespace sdds {
@@ -103,6 +108,41 @@ namespace sdds {
 		return flag;
 	}
 
+	Mark& Mark::operator++() {
+		if (!(m_mark == -1)) {
+			m_mark++;
+			if (m_mark > 100) m_mark = -1;
+		}
+		return *this;
+	}
+
+	Mark Mark::operator++(int) {
+		Mark temp;
+		temp = m_mark;
+		if (!(m_mark == -1)) {
+			m_mark++;
+			if (m_mark > 100) m_mark = -1;
+		}
+		return temp;
+	}
+
+	Mark& Mark::operator--() {
+		if (!(m_mark == -1)) {
+			m_mark--;	
+			if (m_mark < 0) m_mark = -1;
+		}
+		return *this;
+	}
+
+	Mark Mark::operator--(int) {
+		Mark temp = m_mark;
+		if (!(m_mark == -1)) {
+			m_mark--;
+			if (m_mark < 0) m_mark = -1;
+		}
+		return temp;
+	}
+
 	Mark& Mark::operator=(const int newMark) {
 		if (newMark >= 0 && newMark <= 100) calculate(newMark);
 		else calculate(-1);
@@ -159,6 +199,10 @@ namespace sdds {
 		return *this;
 	}
 
+	bool Mark::operator~() {
+		return m_mark >= 50;
+	}
+
 	int operator+=(int& leftInt, Mark rightMark) {
 		 if (bool(rightMark) && leftInt >= 0 && leftInt <= 100) leftInt += int(rightMark);
 		 return leftInt;
@@ -191,14 +235,13 @@ namespace sdds {
 		return tempMark;
 	}
 
-	Mark operator+(const int leftInt, const Mark rightMark)
+	int operator+(const int leftInt, const Mark rightMark)
 	{
+		int newMark;
 		Mark tempMark;
 		if (bool(rightMark)) {
-			int newMark = leftInt + int(rightMark);
-			if (newMark >= 0 && newMark <= 100) tempMark.calculate(newMark);
-			else tempMark.calculate(-1);
+			newMark = leftInt + int(rightMark);
 		}
-		return tempMark;
+		return newMark;
 	}
 }

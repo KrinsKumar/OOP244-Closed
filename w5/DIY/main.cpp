@@ -62,7 +62,7 @@ void testComparison(const Mark& L, const Mark& E, const Mark& H) {
    cout << "----------------" << endl;
 }
 void unaryOpTest() {
-   /*Mark m, n(51), p(100), R;
+   Mark m, n(51), p(100), R;
    cout << "Testing Unary operators!" << endl;
    cout << "m: " << m << endl;
    R = m--;
@@ -92,7 +92,7 @@ void unaryOpTest() {
    R = p--;
    cout << "R = p--, R: " << R << ", p: " << p << endl;
    R = --p;
-   cout << "R = --p, R: " << R << ", p: " << p << endl;*/
+   cout << "R = --p, R: " << R << ", p: " << p << endl;
 }
 void constructorAndConversion() {
    Mark m, n(30), k(75), p(300);

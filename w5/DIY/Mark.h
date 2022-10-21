@@ -1,3 +1,8 @@
+//Full Name : Krinskumar Bhaveshkumar Vaghasia
+//Student ID# : 169722212
+//Email : kvaghasia@myseneca.ca
+//Date : 16-Oct-2022
+//I have done all the coding by myself and only copied the code that my professor provided to complete my workshops and assignments.
 #ifndef _SDDS_MARK_H_
 #define _SDDS_MARK_H_
 #include <iostream>
@@ -29,10 +34,10 @@ namespace sdds {
 			bool operator>=(const Mark& rightMark)const;
 
 			// unary operators
-			/*Mark& operator++();
 			Mark& operator++();
+			Mark operator++(int);
 			Mark& operator--();
-			Mark& operator--();*/
+			Mark operator--(int);
 
 			// binary operators
 			Mark& operator=(int newMark);
@@ -41,6 +46,8 @@ namespace sdds {
 			Mark& operator-=(int newMark);
 			Mark& operator>>(Mark& rightMark);
 			Mark& operator<<(Mark& rightMark);
+
+			bool operator~();
 	};
 
 	// helper functions with operators
@@ -48,7 +55,7 @@ namespace sdds {
 	int operator-=(int& leftInt, Mark rightMark);
 	Mark operator+(const Mark leftMark, const int rightInt);
 	Mark operator+(const Mark leftMark, const Mark rightMark);
-	Mark operator+(const int leftInt, const Mark rightMark);
+	int operator+(const int leftInt, const Mark rightMark);
 }
 
 
