@@ -18,7 +18,21 @@ namespace sdds {
       double max()const;
       double min()const;
       ~Numbers();
+
+	  // My functions
+	  Numbers(const Numbers& rightNum);
+	  Numbers& operator=(const Numbers& rightNum);
+	  Numbers& sort(bool ascending);
+	  Numbers operator-()const;
+	  Numbers operator+()const;
+	  int numberCount()const;
+	  bool load();
+	  void save();
+	  Numbers operator+=(const double rightNum);
+      std::ostream& display(std::ostream& ostr)const;
    };
+   std::ostream& operator<<(std::ostream& ostr, const Numbers& N);
+   std::istream& operator>>(std::istream& istr, Numbers& N);
 }
 #endif // !SDDS_NUMBERS_H_
 
