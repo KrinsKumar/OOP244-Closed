@@ -54,7 +54,7 @@ void test1() {
    Numbers N("numbers.txt");
    N += 34.56;
    cout << N << endl;
-   //displayList(N);
+   displayList(N);
    endTest(1);
 }
 void test2() {

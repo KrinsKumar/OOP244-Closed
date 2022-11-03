@@ -184,7 +184,7 @@ namespace sdds {
 	      tempDoubles[i] = m_numbers[i];
       }
       tempDoubles[m_numCount] = rightNum;    // that one extra space gets assigned
-      delete m_numbers;    // old storge deleted
+      delete []m_numbers;    // old storge deleted
       m_numCount++;    
       m_numbers = new double[m_numCount];    // new storage with +1 storage
       for (int i = 0; i < m_numCount; i++) {
