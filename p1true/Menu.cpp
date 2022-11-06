@@ -26,11 +26,6 @@ namespace sdds {
       }
       return ost;
    }
-
-   MenuItem& MenuItem::operator=(const MenuItem& rightMenuItem) {
-      MenuItem temp;
-      return temp;   // returns a temp invalid instance of the class
-   }
  
  //======================================================================================
 
@@ -60,11 +55,6 @@ namespace sdds {
       return run();
    }
 
-   Menu& Menu::operator=(const Menu& rightMenu)  {
-      Menu temp;
-      return temp;   // returns a temp invalid instance of the class
-   }
-
    Menu& Menu::operator=(const char title[]) {
       if (title != NULL) {
          strcpy(m_title, title);
@@ -88,14 +78,27 @@ namespace sdds {
 
    std::ostream& Menu::display(std::ostream& ost) const{
       if (m_valid) {
+         if (m_indentation != 0) {
+            for (int j = 0; j < m_indentation; j++) {
+               ost << "    ";
+            }
+         }
+         ost << m_title << endl;
          if (m_totalItems == 0) {
             ost << "No Items to display!" << endl;
          }
          else {
-            ost << m_title << endl;
             for (int i = 0; i < m_totalItems; i++) {
+               if (m_indentation != 0) {
+                  for (int j = 0; j < m_indentation; j++) {
+                     ost << "    ";
+                  }
+               }
                ost << (i+1) << "- ";
-               m_menuItems[i].display() << endl;
+               m_menuItems[i].display();
+            }
+            for (int j = 0; j < m_indentation; j++) {
+               ost << "    ";
             }
             ost << "> ";
          }
@@ -122,12 +125,12 @@ namespace sdds {
 
    int Menu::run() const {
       int userResponse;
-      if (m_totalItems == 0) {
+      display();
+      if (m_totalItems == 0 || !m_valid) {
          userResponse = 0;
       } else {
-         display();
-         cin >> userResponse;
          do {
+            cin >> userResponse;
             while (cin.fail()) {
                cout << "Invalid Integer, try again: ";
                cin.clear();
@@ -138,15 +141,18 @@ namespace sdds {
                cout << "Invalid selection, try again: ";
             }
          } while (userResponse > m_totalItems || userResponse < 1);
+         cin.clear();
+         cin.ignore(1000, '\n');
       }
       return userResponse;
    }
 
    void Menu::clear() {
-      for (int i = 0; i < MAX_NO_OF_ITEMS; i++) {
+      for (int i = 0; i < m_totalItems; i++) {
          MenuItem temp;
          m_menuItems[i] = temp;
       }
+      m_totalItems = 0;
    }
 
 

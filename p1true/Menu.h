@@ -12,8 +12,8 @@ namespace sdds {
 
       MenuItem();
       MenuItem(const char item[]);
+      MenuItem(const MenuItem& Item) = delete;
 
-      MenuItem& operator=(const MenuItem& rightMenuItem);
       std::ostream& display(std::ostream& ost = std::cout)const; 
    };
    // helper function for 
@@ -30,10 +30,10 @@ namespace sdds {
       public:
          Menu();
          Menu(const char title[], int indentation = 0);
+         Menu(const Menu& menu) = delete;
          operator bool() const;
          operator int() const;
 
-         Menu& operator=(const Menu& rightMenu);
          Menu& operator=(const char title[]);    // updates the title of the class
          Menu& operator<<(const char title[]);
          
