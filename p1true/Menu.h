@@ -1,3 +1,19 @@
+/* Citation and Sources...
+Final Project Milestone 1
+Module: Menu
+Filename: menu.h
+Version 1.1
+Author	Krinskumar Bhaveshkumar Vaghasia
+Revision History
+-----------------------------------------------------------
+Date      Reason
+2022/11/6  Preliminary release
+2022/11/8  Added Citation
+-----------------------------------------------------------
+I have done all the coding by myself and only copied the code
+that my professor provided to complete my project milestones.
+-----------------------------------------------------------*/
+
 #ifndef _SDDS_MENU_H_
 #define _SDDS_MENU_H_
 
