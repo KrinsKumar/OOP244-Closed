@@ -1,9 +1,9 @@
 /*
-Name:
-Email:
-Student ID:
-Data:
-Section:
+Name: Krinskumar Bhaveshkumar Vaghasia
+Email: kvaghasia@myseneca.ca
+Student ID: 169722212
+Data: 11th November 2022
+Section: Lab - Workshop 7
 */
 #define _CRT_SECURE_NO_WARNINGS
 #include <iostream>
@@ -33,7 +33,7 @@ namespace sdds
         cout.unsetf(ios::right);
         cout.setf(ios::left);
         cout.width(20);
-        cout << address << " | " << endl;
+        cout << address << "|" << endl;
         cout.unsetf(ios::left);
 
 

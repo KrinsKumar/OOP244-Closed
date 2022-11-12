@@ -1,9 +1,9 @@
 /*
-Name:
-Email:
-Student ID:
-Data:
-Section:
+Name: Krinskumar Bhaveshkumar Vaghasia
+Email: kvaghasia@myseneca.ca
+Student ID: 169722212
+Data: 11th November 2022
+Section: Lab - Workshop 7
 */
 #ifndef SDDS_VehicleBasic_H
 #define SDDS_VehicleBasic_H

@@ -1,9 +1,9 @@
 /*
-Name:
-Email:
-Student ID:
-Data:
-Section:
+Name: Krinskumar Bhaveshkumar Vaghasia
+Email: kvaghasia@myseneca.ca
+Student ID: 169722212
+Data: 11th November 2022
+Section: Lab - Workshop 7
 */
 #include<iostream>
 #include "Dumper.h"
@@ -44,12 +44,21 @@ namespace sdds
     }
 
     std::istream& Dumper::read(std::istream& is) {
+        char tempString[100];
+        int tempInt;
         cout << "Built year: ";
-        cin << updateYear();
+        is >> tempInt;
+        updateYear(tempInt);
         cout << "License plate: ";
-        is >> m_licenseNumber;
+        is >> tempString;
+        updateNumber(tempString);
         cout << "Current location: ";
-        is >> m_address;
+        is >> tempString;
+        updateAddress(tempString);
+        cout << "Capacity: ";
+        is >> m_maxLoadWeight;
+        cout << "Cargo: ";
+        is >> m_currentLoad;
 
         return is;
     }
@@ -61,6 +70,5 @@ namespace sdds
     std::istream& operator>>(std::istream& is, Dumper& readDumper) {
         return readDumper.read(is);
     }
-
 }
 
