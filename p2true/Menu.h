@@ -16,8 +16,6 @@ namespace sdds {
 
       std::ostream& display(std::ostream& ost = std::cout)const; 
    };
-   // helper function for 
-   //std::ostream& operator<<(std::ostream& ost, const MenuItem leftItem);
 
 
    class Menu {
