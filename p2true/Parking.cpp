@@ -47,8 +47,9 @@ namespace sdds {
     }
 
     bool Parking::exitParkingApp() {
-        char userSelection;
-        bool flag1 = true;
+        char userSelection;    // stores the user selection
+        bool flag1 = true;    //  flag for the loop
+        bool returnFlag;
         cout << "This will terminate the application and save the data!" << endl;
         cout << "Are you sure? (Y)es/(N)o: ";
         do {
@@ -59,33 +60,39 @@ namespace sdds {
                 cin.ignore(1000, '\n');
             }
             else {
-                if (userSelection == 'y' || userSelection == 'Y' || userSelection == 'n' || userSelection == 'N') {
+                if (userSelection == 'y' || userSelection == 'Y') {
                     flag1 = false;
+                    returnFlag = true;
+                } else if (userSelection == 'n' || userSelection == 'N') {
+                    flag1 = false;
+                    returnFlag = false;
                 } else cout << "Invalid response, only (Y)es or (N)o are acceptable, retry: ";
             }
         } while (flag1);
-        return userSelection;
+        return returnFlag;
     }
 
     bool Parking::loadDataFile() {
         bool flag1 = false;
         if (m_isClassValid) {
             flag1 = true;
+            cout << "---------------------------------" << endl;
             cout << "loading data from " << m_fileName << endl;
+            cout << "---------------------------------" << endl << endl;
         }
         return flag1;
     }
 
     void Parking::saveDataFile() {
         if (m_isClassValid) {
+            cout << "---------------------------------" << endl;
             cout << "Saving data into " << m_fileName << endl;
+            cout << "---------------------------------" << endl;
         }
     }
 
     Parking::Parking(const char* filePath) {
-
         m_isClassValid = false;
-        m_fileName = nullptr;
         // set the file path
         if (filePath != nullptr) {
             if (strcmp(filePath, "")) {
@@ -93,12 +100,10 @@ namespace sdds {
                 m_fileName = new char[strlen(filePath) + 1];    // allocates the memory
                 strcpy(m_fileName, filePath);    // assigns the allocated memory
                 if (loadDataFile()) {
-
                 // initialises the main parking menu
                 m_parkingMenu = { "Parking Menu, select an action:", 0 };
                 m_parkingMenu << "Park Vehicle" << "Return Vehicle" << "List Parked Vehicles" << "Find Vehicle" <<
                     "Close Parking (End of day)" << "Exit Program";
-
                 // initilises the menu for the first option 
                 m_vehicalSelection = { "Select type of the vehicle:", 1 };
                 m_vehicalSelection << "Car" << "Motorcycle" << "Cancel";
@@ -107,8 +112,9 @@ namespace sdds {
                     cout << "Error in data file" << endl;
                     m_isClassValid = false;
                 }
-            }
-        }
+            } else cout << "Error in data file" << endl;
+        } else cout << "Error in data file" << endl;
+        
     }
 
     Parking::~Parking() {
@@ -139,10 +145,16 @@ namespace sdds {
                         findVehical();
                         break;
                     case 5:
-                        if (closeParking()) flag1 = false;
+                        if (closeParking()) {
+                            flag1 = false;
+                            cout << "Ending application!" << endl;
+                        }
                         break;
                     case 6:
-                        if (exitParkingApp()) flag1 = false;
+                        if (exitParkingApp()) {
+                            flag1 = false;
+                            cout << "Exiting application!" << endl;
+                        }
                         break;
                 }
             } while (flag1);

@@ -4,7 +4,7 @@
 namespace sdds {
 
    class Parking {
-      char* m_fileName;
+      char* m_fileName{};
       Menu m_parkingMenu;
       Menu m_vehicalSelection;
       bool m_isClassValid;    // true if the class is valid
