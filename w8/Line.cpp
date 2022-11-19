@@ -2,7 +2,7 @@
 
 namespace sdds {
 
-    Line::Line() {
+    Line::Line(): LblShape() {
         m_length = 0;
     }
 
@@ -10,14 +10,21 @@ namespace sdds {
         m_length = length;
     }
 
-    void Line::draw(std::ostream& os) const {
-
+    void Line::getSpecs(std::istream& is) {
+        LblShape::getSpecs(is);
+        is >> m_length;
+        is.ignore(1000, '\n');
     }
 
-    void Line::getSpecs(std::istream& is) {
-         LblShape::getSpecs(is);
-         is >> m_length;
-         is.ignore(1000, '\n');
+    void Line::draw(std::ostream& os) const {
+        if (m_length > 0 && LblShape::lable() == NULL) {
+            os << LblShape::lable();
+            os.width(m_length);
+            os.fill('=');
+            os.setf(std::ios::left);
+            os << '=';
+            os.unsetf(std::ios::left);
+        }
     }
 
 

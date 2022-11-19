@@ -7,7 +7,7 @@ Author: Fardad Soleimanloo
 Revision History
 -----------------------------------------------------------
 Date       Reason
------------------------------------------------------------*//*
+-----------------------------------------------------------*/
 #include <iostream>
 #include <fstream>
 #include "Shape.h"
@@ -70,4 +70,4 @@ int main() {
       }
    }
    return 0;
-}*/
+}

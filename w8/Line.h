@@ -9,9 +9,9 @@ namespace sdds {
             int m_length;
         public:
          Line();
-         Line(const char* Cstring,const int length);
          void draw(std::ostream& os) const;
          void getSpecs(std::istream& is);
+         Line(const char* Cstring,const int length);
 
     };
 
