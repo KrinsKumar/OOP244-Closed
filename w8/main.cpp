@@ -28,14 +28,14 @@ int main() {
    cout << *L << endl;
    cout << *R << endl;
    cout << "Enter the following:\n>Line two,40<ETNER>\n>";
-   cin >> *L;
+   //cin >> *L;
    cout << "The following outputs should be the same" << endl;
    cout << "The correct output:" << endl;
    cout << "Line two================================" << endl;
    cout << "Your output:" << endl;
    cout << *L << endl;
    cout << "Enter the following:\n>A 50 by 4 frame to be printed on screen,50,4<ETNER>\n>";
-   cin >> *R;
+  /* cin >> *R;*/
    cout << "The following outputs should be the same" << endl;
    cout << "The correct output:" << endl;
    cout << "+------------------------------------------------+\n"

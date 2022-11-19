@@ -1,9 +1,13 @@
+//Full Name : Krinskumar Bhaveshkumar Vaghasia
+//Student ID# : 169722212
+//Email : kvaghasia@myseneca.ca
+//Date : 18-NOV-2022
+//I have done all the coding by myself and only copied the code that my professor provided to complete my workshops and assignments.
 #define _CRT_SECURE_NO_WARNINGS
-#include <string>
+#include <cstring>
 #include "LblShape.h"
 
 namespace sdds {
-
 
     LblShape::LblShape() {
         
@@ -24,7 +28,8 @@ namespace sdds {
 
     void LblShape::getSpecs(std::istream& is) {
         char tempString[100];
-        is.getline(tempString, 50);
+        delete[] m_label;
+        is.getline(tempString, 50,  ',');
         m_label = new char[strlen(tempString) + 1];
         strcpy(m_label, tempString);
     }
