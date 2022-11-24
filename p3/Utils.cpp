@@ -75,6 +75,10 @@ namespace sdds {
         if (ch >= 'A' && ch <= 'Z') ch += ('a' - 'A');
         return ch;
     }
+    char Utils::toupper(char ch)const {
+        if (ch >= 'a' && ch <= 'z') ch -= ('a' - 'A');
+        return ch;
+    }
     int Utils::strcmp(const char* s1, const char* s2)const {
         int i;
         for (i = 0; s1[i] && s2[i] && s1[i] == s2[i]; i++);

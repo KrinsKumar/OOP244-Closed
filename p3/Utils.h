@@ -7,6 +7,7 @@ namespace sdds {
     public:
         char* alcpy(const char* cstr);
         char tolower(char ch)const;
+        char toupper(char ch)const;
         char* strcat(char* des, const char* src)const;
         int strcmp(const char* s1, const char* s2)const;
         int strcmp(const char* s1, const char* s2, int len)const;

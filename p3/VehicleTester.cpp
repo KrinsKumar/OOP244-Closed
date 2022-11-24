@@ -28,8 +28,8 @@ int main() {
    Truck V;
    Truck C("abcd", "C car");
    // you can comment each test to develop your Vehicle step by step: 
-   TestIO(V);
-   TestOperatorEqualEqual(C, V);
+   //TestIO(V);
+   //TestOperatorEqualEqual(C, V);
    TestValidations();
    return 0;
 }
