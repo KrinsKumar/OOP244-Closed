@@ -1,3 +1,18 @@
+/* Citation and Sources...
+Final Project Milestone 3
+Module: Menu
+Filename: menu.cpp
+Version 1.1
+Author	Krinskumar Bhaveshkumar Vaghasia
+Revision History
+-----------------------------------------------------------
+Date      Reason
+2022/11/24  Preliminary release
+2022/11/24  Added Citation
+-----------------------------------------------------------
+I have done all the coding by myself and only copied the code
+that my professor provided to complete my project milestones.
+-----------------------------------------------------------*/
 #ifndef _SDDS_READWRITABLE_H_
 #define _SDDS_READWRITABLE_H_
 
