@@ -17,9 +17,9 @@ using namespace sdds;
 void show(Text T)  {
    cout << "*" << T << "*" << endl;
 }
-//void saveHtml(HtmlText H) {
-//   ofstream("dcwrLittle.html")<<H;
-//}
+void saveHtml(HtmlText H) {
+   ofstream("dcwrLittle.html")<<H;
+}
 void displayFile(const char* filename) {
    cout << "File: " << filename << endl;
    cout << "==================================================" << endl;
@@ -31,16 +31,6 @@ void displayFile(const char* filename) {
    cout << endl << "==================================================" << endl;
 }
 int main() {
-
-    Text T;
-    Text Y;
-    ifstream test("test.txt");
-    test >> T;
-    Y = T;
-    Text Z = Y;
-    T = Z;
-    cout << "*" << T << "*" << endl;
-    /*
    Text T;
    Text Y;
    Text Z;
@@ -61,6 +51,6 @@ int main() {
    H2 = H1;
    H3 = H2;
    saveHtml(H3);
-   displayFile("dcwrLittle.html");*/
+   displayFile("dcwrLittle.html");
    return 0;
 }

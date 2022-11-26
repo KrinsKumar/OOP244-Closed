@@ -11,8 +11,10 @@ namespace sdds {
         private:   
             char* m_title{};
         public:
+            HtmlText();
             HtmlText(const char* title);
             HtmlText(const HtmlText& rightHtml);
+            ~HtmlText();
 
             HtmlText& operator=(const HtmlText& rightHtml);
 

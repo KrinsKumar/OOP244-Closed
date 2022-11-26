@@ -31,16 +31,17 @@ namespace sdds {
     }
 
     std::istream& sdds::Text::read(std::istream& istr) {
-        //delete[] m_content;
+        delete[] m_content;
         int i;    // for the loop
         unsigned length = getFileLength(istr);
-        m_content = new char[8];
+        m_content = new char[length];
         for (i = 0; i < length && !istr.fail(); i++) {
             istr.get(m_content[i]);
         }
         if (i > 0) {
             istr.clear();
-            m_isEmpty = false;    
+            m_isEmpty = false;
+            m_content[i-1] = '\0';
         }
         return istr;
     }

@@ -15,7 +15,7 @@ namespace sdds {
         public:
             Text();
             Text(const Text& rightText);
-            ~Text();
+            virtual ~Text();
 
             Text& operator=(const Text& rightText);
             std::istream& read(std::istream& istr);
