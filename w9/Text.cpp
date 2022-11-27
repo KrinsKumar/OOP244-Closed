@@ -1,3 +1,4 @@
+// I have done all the coding by myself and only copied the code that my professor provided to complete my workshops and assignments.
 #define _CRT_SECURE_NO_WARNINGS
 #include <cstring>
 #include "Text.h"
@@ -10,7 +11,9 @@ namespace sdds {
     }
 
     sdds::Text::Text(const Text& rightText) {
+        m_content = NULL;
         *this = rightText;
+        m_isEmpty = rightText.m_isEmpty;
     }
 
     sdds::Text::~Text() {
@@ -22,26 +25,34 @@ namespace sdds {
     }
 
     Text& sdds::Text::operator=(const Text& rightText) {
+        delete[] m_content;
         if (!rightText.m_isEmpty) {
             m_content = new char[strlen(rightText.m_content) + 1];
             strcpy(m_content, rightText.m_content);
-            m_isEmpty = false;
+            m_isEmpty = rightText.m_isEmpty;
         }
         return *this;
     }
 
     std::istream& sdds::Text::read(std::istream& istr) {
         delete[] m_content;
-        int i;    // for the loop
+        unsigned i;    // for the loop
         unsigned length = getFileLength(istr);
-        m_content = new char[length];
-        for (i = 0; i < length && !istr.fail(); i++) {
-            istr.get(m_content[i]);
+        if (length > 0) {
+            m_content = new char[length + 1];
+            for (i = 0; i < length && !istr.fail(); i++) {
+                istr.get(m_content[i]);
+            }
+            if (i > 0) {
+                istr.clear();
+                istr.ignore(1000,'\n');
+                m_isEmpty = false;
+                m_content[i] = '\0';
+            }
         }
-        if (i > 0) {
-            istr.clear();
-            m_isEmpty = false;
-            m_content[i-1] = '\0';
+        else {
+            m_isEmpty = true;
+            m_content = NULL;
         }
         return istr;
     }

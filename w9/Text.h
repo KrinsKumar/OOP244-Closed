@@ -1,4 +1,4 @@
-
+// I have done all the coding by myself and only copied the code that my professor provided to complete my workshops and assignments.
 #ifndef _SDDS_TEXT_H_
 #define _SDDS_TEXT_H_
 
@@ -9,7 +9,7 @@ namespace sdds {
     class Text {
         private:
             char* m_content;
-            bool m_isEmpty;    // true if the class is empty
+            bool m_isEmpty = true;    // true if the class is empty
         protected:
             const char& operator[](int index) const;
         public:
@@ -19,7 +19,7 @@ namespace sdds {
 
             Text& operator=(const Text& rightText);
             std::istream& read(std::istream& istr);
-            std::ostream& write(std::ostream& ostr) const;
+            virtual std::ostream& write(std::ostream& ostr) const;
 
             unsigned getFileLength(std::istream& is);
     };
