@@ -95,6 +95,7 @@ namespace sdds {
     Vehicle& sdds::Vehicle::operator=(const Vehicle& leftVehicle) {
         m_isEmpty = false;
         ut.strcpy(m_license, leftVehicle.m_license);
+        delete[] m_makeModel;
         m_parkingSpot = leftVehicle.m_parkingSpot;
         m_makeModel = ut.alcpy(leftVehicle.m_makeModel);
         ReadWritable::setCsv(leftVehicle.isCsv());

@@ -40,7 +40,7 @@ namespace sdds {
             istr.ignore(1000, '\n');
         }
         else {
-            std::cout << "Car information entry" << std::endl;
+            std::cout << std::endl << "Car information entry" << std::endl;
             Vehicle::read();
             std::cout << "Carwash while parked? (Y)es/(N)o: ";
             char userAnswear[100];
@@ -67,11 +67,12 @@ namespace sdds {
         if (Vehicle::isEmpty()) ostr << "Invalid Car Object" << std::endl;
         else {
             Vehicle::write();
-            if (Vehicle::isCsv()) ostr << m_carWash << std::endl;
+            if (Vehicle::isCsv()) ostr << m_carWash;
             else {
                 if (m_carWash) ostr << "With Carwash";
                 else ostr << "Without Carwash";
             }
+            ostr << std::endl;
         }
         return ostr;
     }

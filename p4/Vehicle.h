@@ -39,7 +39,7 @@ namespace sdds {
             Vehicle();
             Vehicle(const char* license, const char* makeModel);
             Vehicle(const Vehicle& leftVehicle);
-            ~Vehicle();
+            virtual ~Vehicle();
 
             int getParkingSpot() const;
             void setParkingSpot(int newSpot);

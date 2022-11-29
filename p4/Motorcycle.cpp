@@ -39,9 +39,9 @@ namespace sdds {
             istr.ignore(1000, '\n');
         }
         else {
-            std::cout << "Motorcycle information entry" << std::endl;
+            std::cout << std::endl << "Motorcycle information entry" << std::endl;
             Vehicle::read();
-            std::cout << "Does the Motorcycle have a sidecar? (Y)es/(N)o: ";
+            std::cout << "Does the Motorcycle have a side car? (Y)es/(N)o: ";
             char userAnswear[100];
             bool loopFlag = true;
             while (loopFlag) {
@@ -65,12 +65,12 @@ namespace sdds {
     }
 
     std::ostream& Motorcycle::write(std::ostream& ostr) const {
-        if (Vehicle::isEmpty()) ostr << "Invalid Motorcycle Object";
+        if (Vehicle::isEmpty()) ostr << "Invalid Motorcycle Object" << std::endl;
         else {
             Vehicle::write();
             if (Vehicle::isCsv()) ostr << m_hasSideCar << std::endl;
             else {
-                if (m_hasSideCar) ostr << "With Sidecar";
+                if (m_hasSideCar) ostr << "With Sidecar" << std::endl;
             }
         }
         return ostr;
