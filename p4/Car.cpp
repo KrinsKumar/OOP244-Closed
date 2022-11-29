@@ -27,7 +27,7 @@ namespace sdds {
             ostr << "C,";
         }
         else {
-            ostr << "Vehicle type : Car";
+            ostr << "Vehicle type: Car";
             ostr << std::endl;
         }
         return ostr;
@@ -43,12 +43,15 @@ namespace sdds {
             std::cout << "Car information entry" << std::endl;
             Vehicle::read();
             std::cout << "Carwash while parked? (Y)es/(N)o: ";
-            char userAnswear;
+            char userAnswear[100];
             bool loopFlag = true;
             while (loopFlag) {
                 istr >> userAnswear;
-                char upperAnswear = ut.toupper(userAnswear);
-                if (upperAnswear == 'N') {
+                int length = ut.strlen(userAnswear);
+                char upperAnswear = ut.toupper(userAnswear[0]);
+                if (length != 1) {
+                    std::cout << "Invalid response, only (Y)es or (N)o are acceptable, retry: ";
+                } else if (upperAnswear == 'N') {
                     loopFlag = false;
                     m_carWash = false;
                 } else if (upperAnswear == 'Y') {
@@ -61,14 +64,13 @@ namespace sdds {
     }
 
     std::ostream& Car::write(std::ostream& ostr) const {
-        if (Vehicle::isEmpty) ostr << "Invalid Car Object";
+        if (Vehicle::isEmpty()) ostr << "Invalid Car Object" << std::endl;
         else {
             Vehicle::write();
-            if (Vehicle::isCsv()) ostr << m_carWash;
+            if (Vehicle::isCsv()) ostr << m_carWash << std::endl;
             else {
                 if (m_carWash) ostr << "With Carwash";
                 else ostr << "Without Carwash";
-                ostr << std::endl;
             }
         }
         return ostr;

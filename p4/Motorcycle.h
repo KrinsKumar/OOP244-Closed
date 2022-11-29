@@ -11,9 +11,9 @@ namespace sdds {
         public:
             Motorcycle();
             Motorcycle(const char* license, const char* makeModel);
-            Motorcycle(const Motorcycle& carRight);
+            Motorcycle(const Motorcycle& motorRight);
 
-            Motorcycle& operator=(const Motorcycle& carRight);
+            Motorcycle& operator=(const Motorcycle& motorRight);
             virtual std::ostream& writeType(std::ostream& ostr = std::cout) const;
 
             virtual std::istream& read(std::istream& istr = std::cin);

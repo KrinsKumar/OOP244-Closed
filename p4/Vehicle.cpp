@@ -97,6 +97,7 @@ namespace sdds {
         ut.strcpy(m_license, leftVehicle.m_license);
         m_parkingSpot = leftVehicle.m_parkingSpot;
         m_makeModel = ut.alcpy(leftVehicle.m_makeModel);
+        ReadWritable::setCsv(leftVehicle.isCsv());
         return *this;
     }
 
@@ -109,7 +110,7 @@ namespace sdds {
             for (int i = 0; i < ut.strlen(m_license); i++) {    // saves the value in uppercase
                 m_license[i] = ut.toupper(m_license[i]);
             }
-            istr.getline(temp, 8, ',');
+            istr.getline(temp, 60, ',');
             setMakeModel(temp);    // allocates memory for the makemodel member of the class
             if (istr.fail()) {
                 setEmpty();
@@ -134,11 +135,12 @@ namespace sdds {
                 m_license[i] = ut.toupper(m_license[i]);
             }
 
-            loopFlag = true;
+            loopFlag = true;    // for the loop
             std::cout << "Enter Make and Model: ";
+            istr.ignore(1000, '\n');
             do {    // gets make and model
                 char temp[100];
-                istr >> temp;
+                istr.getline(temp, 100 , '\n');
                 if (ut.strlen(temp) <= 60 && ut.strlen(temp) >= 2) { 
                     loopFlag = false;
                     setMakeModel(temp);
