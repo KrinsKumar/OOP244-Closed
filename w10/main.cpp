@@ -1,15 +1,6 @@
 /* ------------------------------------------------------
-Workshop 10 part 1
-Module: N/A
-Filename: main.cpp
-Description:
-This file tests the lab section of your workshop
-Modify the main function as stated in the workshop description
-Version 1
-Author: Fardad Soleimanloo
-Revision History
------------------------------------------------------------
-Date       Reason
+I have done all the coding by myself and only copied the code
+that my professor provided to complete my workshops and assignments.
 -----------------------------------------------------------*/
 #include <iostream>
 #include "Car.h"
@@ -36,7 +27,7 @@ int main() {
    cout << "Searching for Tesla cars: " << endl;
 
    // Call the search function passing "Tesla" as the key argument and "Cres" for Collection 
-   if (Call the search here) {
+   if (search(C, 8, "Tesla", Cres)) {
       cout << Cres.size() << " match" << (Cres.size() == 1 ? "" : "es") << " found:" << endl;
       for (int i = 0; i < Cres.size(); i++) {
          cout << (i + 1) << ": " << Cres[i] << endl;
@@ -47,7 +38,7 @@ int main() {
    }
    cout << "Searching for students with \"Simpson\" in their name" << endl;
    // Call the search function passing "Simpson" as the key argument and "Sres" for Collection 
-   if (Call the search here) {
+   if (search(S, 8, "Simpson", Sres)) {
       cout << Sres.size() << " match" << (Sres.size() == 1 ? "" : "es") << " found:" << endl;
       for (int i = 0; i < Sres.size(); i++) {
          cout << (i + 1) << ": " << Sres[i] << endl;
@@ -58,7 +49,7 @@ int main() {
    }
    cout << "Searching for employees with \"Sim\" in their name" << endl;
    // Call the search function passing "Sim" as the key argument and "Eres" for Collection 
-   if (Call the search here) {
+   if (search(E, 8, "Sim", Eres)) {
       cout << Eres.size() << " match" << (Eres.size() == 1 ? "" : "es") << " found:" << endl;
       for (int i = 0; i < Eres.size(); i++) {
          cout << (i + 1) << ": " << Eres[i] << endl;
@@ -69,7 +60,7 @@ int main() {
    }
    cout << "Searching for employees with \"Jack\" in their name" << endl;
    // Call the search function passing "Jack" as the key argument  and "Eres" for Collection 
-   if (call the search here) {
+   if (search(E, 8, "Tesla", Eres)) {
       cout << Eres.size() << " match" << (Eres.size() == 1 ? "" : "es") << " found:" << endl;
       for (int i = 0; i < Eres.size(); i++) {
          cout << (i + 1) << ": " << Eres[i] << endl;

@@ -1,10 +1,8 @@
-// Workshop 9:
-// Version: 1.1 
-//      added template signature to the return
-//      type of add function      
-// Date: 11/23/2020
-// Author: Fardad Soleimanloo
-/////////////////////////////////////////////
+/* ------------------------------------------------------
+I have done all the coding by myself and only copied the code
+that my professor provided to complete my workshops and assignments.
+-----------------------------------------------------------*/
+
 #ifndef SDDS_COLLECTION_H_
 #define SDDS_COLLECTION_H_
 namespace sdds {
@@ -76,17 +74,18 @@ namespace sdds {
       delete[] m_data;
    }
 
-   template <typename T>
-   bool search(T objArray[], int count, char* value, T& collection) {
-      bool flag = false;
-      
-      for (int i = 0; i < count, i++) {
-          if (objArray[i] == value) {
-
-          }
-      }
-
-      return flag;
+   template<typename T>
+   bool search(T objArray[], int count, const char* value, Collection<T>& collection) {
+       bool flag = false;
+       int counter = 0;
+       for (int i = 0; i < count; i++) {
+           if (objArray[i] == value) {
+               flag = true;
+               collection.add(objArray[i]);
+               counter++;
+           }
+       }
+       return flag;
    }
 
 
