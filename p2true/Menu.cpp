@@ -1,3 +1,18 @@
+/* Citation and Sources...
+Final Project Milestone 2
+Module: Menu
+Filename: menu.cpp
+Version 1.1
+Author	Krinskumar Bhaveshkumar Vaghasia
+Revision History
+-----------------------------------------------------------
+Date      Reason
+2022/11/17  Preliminary release
+2022/12/01  Added Citation
+-----------------------------------------------------------
+I have done all the coding by myself and only copied the code
+that my professor provided to complete my project milestones.
+-----------------------------------------------------------*/
 #include "Menu.h"
 #include "Utils.h"
 
