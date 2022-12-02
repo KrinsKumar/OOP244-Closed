@@ -75,6 +75,21 @@ namespace sdds {
    Collection<T>::~Collection() {
       delete[] m_data;
    }
+
+   template <typename T>
+   bool search(T objArray[], int count, char* value, T& collection) {
+      bool flag = false;
+      
+      for (int i = 0; i < count, i++) {
+          if (objArray[i] == value) {
+
+          }
+      }
+
+      return flag;
+   }
+
+
 }
 
 #endif // !SDDS_COLLECTION_H_
