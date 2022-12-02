@@ -1,6 +1,5 @@
-#include "Vehicle.h"
 /* Citation and Sources...
-Final Project Milestone 3
+Final Project Milestone 4
 Module: Menu
 Filename: menu.cpp
 Version 1.1
@@ -8,8 +7,7 @@ Author	Krinskumar Bhaveshkumar Vaghasia
 Revision History
 -----------------------------------------------------------
 Date      Reason
-2022/11/24  Preliminary release
-2022/11/24  Added Citation
+2022/12/01  Preliminary release
 -----------------------------------------------------------
 I have done all the coding by myself and only copied the code
 that my professor provided to complete my project milestones.
