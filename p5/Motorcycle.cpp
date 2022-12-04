@@ -48,7 +48,7 @@ namespace sdds {
 
     std::istream& Motorcycle::read(std::istream& istr) {
         if (ReadWritable::isCsv()) {
-            Vehicle::read();
+            Vehicle::read(istr);
             istr >> m_hasSideCar;
             istr.ignore(1000, '\n');
         }

@@ -26,7 +26,7 @@ namespace sdds {
       Menu m_vehicalSelection;
       bool m_isClassValid;    // true if the class is valid
       int m_SpotsAvailable;
-      int m_spotsTaken;
+      int m_spotsTaken = 0;
       Vehicle* m_vehicalArray[maxSpots];
 
       bool isEmpty() const;

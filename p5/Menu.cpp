@@ -22,14 +22,14 @@ namespace sdds {
 
    MenuItem::MenuItem() {
       m_valid = false;
-      strcpy(m_item, "");
+      ut.strcpy(m_item, "");
    }
 
    MenuItem::MenuItem(const char item[]) {
       m_valid = false;
-      strcpy(m_item, "");
+      ut.strcpy(m_item, "");
       if (item != NULL) {
-         strcpy(m_item, item);   // copies the arguement in the class
+          ut.strcpy(m_item, item);   // copies the arguement in the class
          m_valid = true;
       }
    }
@@ -46,17 +46,17 @@ namespace sdds {
    Menu::Menu() {
       m_indentation = 0;
       m_totalItems = 0;
-      strcpy(m_title, "");
+      ut.strcpy(m_title, "");
       m_valid = false;
    }
 
    Menu::Menu(const char title[], int indentation) {
       m_indentation = indentation;
       m_totalItems = 0;
-      strcpy(m_title, "");
+      ut.strcpy(m_title, "");
       m_valid = false;
       if (title != NULL) {
-         strcpy(m_title, title);
+          ut.strcpy(m_title, title);
          m_valid = true;
       }
    }
@@ -71,11 +71,11 @@ namespace sdds {
 
    Menu& Menu::operator=(const char title[]) {
       if (title != NULL) {
-         strcpy(m_title, title);
+          ut.strcpy(m_title, title);
          m_valid = true;
       }
       else {
-         strcpy(m_title, "");
+          ut.strcpy(m_title, "");
          m_valid = true;
       }
       return *this;

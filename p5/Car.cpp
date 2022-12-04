@@ -49,7 +49,7 @@ namespace sdds {
 
     std::istream& Car::read(std::istream& istr) {
         if (ReadWritable::isCsv()) {
-            Vehicle::read();
+            Vehicle::read(istr);
             istr >> m_carWash;
             istr.ignore(1000, '\n');
         }

@@ -22,13 +22,14 @@ namespace sdds {
     }
 
     sdds::Vehicle::Vehicle(const char* license, const char* makeModel) {
-        if (license != NULL && makeModel != NULL && ut.strlen(license) <= 8 && ut.strlen(license) > 0 && 
+        if (license != NULL && makeModel != NULL && ut.strlen(license) <= 8 && ut.strlen(license) > 0 &&
             ut.strlen(makeModel) > 2) {
             m_parkingSpot = 0;
             ut.strcpy(m_license, license);
             m_makeModel = ut.alcpy(makeModel);
             m_isEmpty = false;
-        } else setEmpty();
+        }
+        else setEmpty();
     }
 
     sdds::Vehicle::Vehicle(const Vehicle& leftVehicle) {
@@ -63,17 +64,19 @@ namespace sdds {
         if (newMakeModel != NULL) {
             delete[] m_makeModel;
             m_makeModel = ut.alcpy(newMakeModel);
-        } else setEmpty();
+        }
+        else setEmpty();
     }
 
-    int Vehicle::getParkingSpot() const{
+    int Vehicle::getParkingSpot() const {
         return m_parkingSpot;
     }
 
     void Vehicle::setParkingSpot(int newSpot) {
         if (newSpot > 0) {
             m_parkingSpot = newSpot;
-        } else setEmpty();
+        }
+        else setEmpty();
     }
 
     bool Vehicle::operator==(const char* licensePlate) const {
@@ -86,7 +89,7 @@ namespace sdds {
         return returnFlag;
     }
 
-    bool Vehicle::operator==(const Vehicle& leftVehicle) const  {
+    bool Vehicle::operator==(const Vehicle& leftVehicle) const {
         return *this == leftVehicle.m_license;
     }
 
@@ -115,7 +118,8 @@ namespace sdds {
                 setEmpty();
                 istr.clear();
                 istr.ignore(1000, '\n');
-            } else m_isEmpty = false;
+            }
+            else m_isEmpty = false;
         }
         else {
             bool loopFlag = true;
@@ -127,8 +131,8 @@ namespace sdds {
                     loopFlag = false;
                     ut.strcpy(m_license, temp);
                 }
-                else {std::cout << "Invalid License Plate, try again: ";}
-            } while (loopFlag); 
+                else { std::cout << "Invalid License Plate, try again: "; }
+            } while (loopFlag);
 
             for (int i = 0; i < ut.strlen(m_license); i++) {    // saves the value in uppercase
                 m_license[i] = ut.toupper(m_license[i]);
@@ -139,8 +143,8 @@ namespace sdds {
             istr.ignore(1000, '\n');
             do {    // gets make and model
                 char temp[100];
-                istr.getline(temp, 100 , '\n');
-                if (ut.strlen(temp) <= 60 && ut.strlen(temp) >= 2) { 
+                istr.getline(temp, 100, '\n');
+                if (ut.strlen(temp) <= 60 && ut.strlen(temp) >= 2) {
                     loopFlag = false;
                     setMakeModel(temp);
                 }
@@ -151,7 +155,8 @@ namespace sdds {
                 setEmpty();
                 istr.clear();
                 istr.ignore(1000, '\n');
-            } else m_isEmpty = false;
+            }
+            else m_isEmpty = false;
             m_parkingSpot = 0;
 
         }
@@ -161,17 +166,18 @@ namespace sdds {
     std::ostream& Vehicle::write(std::ostream& ostr) const {
         if (m_isEmpty) {
             ostr << "Invalid Vehicle Object" << std::endl;
-        } else {
+        }
+        else {
             writeType();
             if (isCsv()) {
                 ostr << m_parkingSpot << ',' << m_license << ',' << m_makeModel << ',';
             }
             else {
                 ostr << "Parking Spot Number: ";
-                if (m_parkingSpot == 0) { ostr << "N/A";}
-                else {ostr << m_parkingSpot;}
+                if (m_parkingSpot == 0) { ostr << "N/A"; }
+                else { ostr << m_parkingSpot; }
 
-                ostr << std::endl << "License Plate: "<< m_license << std::endl;
+                ostr << std::endl << "License Plate: " << m_license << std::endl;
                 ostr << "Make and Model: " << m_makeModel << std::endl;
             }
         }
