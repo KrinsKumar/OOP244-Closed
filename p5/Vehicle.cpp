@@ -168,7 +168,7 @@ namespace sdds {
             ostr << "Invalid Vehicle Object" << std::endl;
         }
         else {
-            writeType();
+            writeType(ostr);
             if (isCsv()) {
                 ostr << m_parkingSpot << ',' << m_license << ',' << m_makeModel << ',';
             }

@@ -81,9 +81,12 @@ namespace sdds {
     std::ostream& Motorcycle::write(std::ostream& ostr) const {
         if (Vehicle::isEmpty()) ostr << "Invalid Motorcycle Object" << std::endl;
         else {
-            Vehicle::write();
-            if (Vehicle::isCsv()) ostr << m_hasSideCar << std::endl;
+            if (Vehicle::isCsv()) {
+                Vehicle::write(ostr);
+                ostr << m_hasSideCar << std::endl;
+            }
             else {
+                Vehicle::write(ostr);
                 if (m_hasSideCar) ostr << "With Sidecar" << std::endl;
             }
         }

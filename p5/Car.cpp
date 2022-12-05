@@ -80,13 +80,14 @@ namespace sdds {
     std::ostream& Car::write(std::ostream& ostr) const {
         if (Vehicle::isEmpty()) ostr << "Invalid Car Object" << std::endl;
         else {
-            Vehicle::write();
-            if (Vehicle::isCsv()) ostr << m_carWash;
-            else {
-                if (m_carWash) ostr << "With Carwash";
-                else ostr << "Without Carwash";
+            if (Vehicle::isCsv()) {
+                Vehicle::write(ostr);
+                ostr << m_carWash << std::endl;
             }
-            ostr << std::endl;
+            else {
+                Vehicle::write(ostr);
+                if (m_carWash) ostr << "With Carwash" << std::endl;
+            }
         }
         return ostr;
     }

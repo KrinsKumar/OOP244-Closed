@@ -148,7 +148,7 @@ namespace sdds {
         char userSelection;    // stores the user selection
         bool flag1 = true;    //  flag for the loop
         bool returnFlag;
-        cout << "This will terminate the application and save the data!" << endl;
+        cout << "This will terminate the program!" << endl;
         cout << "Are you sure? (Y)es/(N)o: ";
         do {
             cin >> userSelection;
@@ -184,7 +184,7 @@ namespace sdds {
                     if (vehicalType == 'M') {
                         Vehicle* tempVehicle = new Motorcycle;
                         tempVehicle->setCsv(true);
-                        tempVehicle->read();
+                        tempVehicle->read(file);
                         m_vehicalArray[tempVehicle->getParkingSpot() - 1] = tempVehicle;
                         m_spotsTaken++;
                         m_SpotsAvailable--;
@@ -192,7 +192,7 @@ namespace sdds {
                     else if (vehicalType == 'C') {
                         Vehicle* tempVehicle = new Car;
                         tempVehicle->setCsv(true);
-                        tempVehicle->read();
+                        tempVehicle->read(file);
                         m_vehicalArray[tempVehicle->getParkingSpot() - 1] = tempVehicle;
                         m_spotsTaken++;
                         m_SpotsAvailable--;
@@ -200,6 +200,7 @@ namespace sdds {
                     else {
                         flagLoop = false;
                     }
+                    vehicalType = ' ';
                 } while (flagLoop && m_spotsTaken < maxSpots);
             }
         }
@@ -213,7 +214,7 @@ namespace sdds {
                 for (int i = 0; i < maxSpots; i++) {
                     if (m_vehicalArray[i] != nullptr) {
                         m_vehicalArray[i]->setCsv(true);
-                        m_vehicalArray[i]->write();
+                        m_vehicalArray[i]->write(file);
                     }
                 }
             }
@@ -226,6 +227,9 @@ namespace sdds {
         if (!(noOfSpots < 10 || noOfSpots > maxSpots)) {
             m_SpotsAvailable = noOfSpots;
             if (filePath != nullptr) {
+                for (int i = 0; i < maxSpots; i++) {
+                    m_vehicalArray[i] = nullptr;
+                }
                 if (ut.strcmp(filePath, "")) {
                     m_isClassValid = true;
                     m_fileName = new char[ut.strlen(filePath) + 1];    // allocates the memory
@@ -242,9 +246,6 @@ namespace sdds {
                         cout << "Error in data file" << endl;
                         m_isClassValid = false;
                     } 
-                    for (int i = 0; i < maxSpots; i++) {
-                        m_vehicalArray[i] = nullptr;
-                    }
                 } else cout << "Error in data file" << endl;
             } else cout << "Error in data file" << endl;
         }
@@ -253,6 +254,9 @@ namespace sdds {
     Parking::~Parking() {
         saveDataFile();
         delete[] m_fileName;
+        for (int i = 0; i < maxSpots; i++) {
+            delete m_vehicalArray[i];
+        }
     }
 
     int Parking::run() {
@@ -286,7 +290,7 @@ namespace sdds {
                     case 6:
                         if (exitParkingApp()) {
                             flag1 = false;
-                            cout << "Exiting application!" << endl;
+                            cout << "Exiting program!" << endl;
                         }
                         break;
                 }
@@ -301,13 +305,13 @@ namespace sdds {
 
     void Parking::parkingStatus() {
         cout << "****** Valet Parking ******" << endl;
-        cout << "***** Available spots: ";
+        cout << "*****  Available spots: ";
         cout.width(4);
         cout.fill(' ');
         cout.setf(ios::left);
         cout << m_SpotsAvailable;
         cout.unsetf(ios::left);
-        cout << "*****";
+        cout << " *****";
         cout << endl;
     }
    
@@ -318,7 +322,6 @@ namespace sdds {
             cout << "Parking is full";
         }
         else {
-            int a = 4;
             int selection = m_vehicalSelection.run();
             switch (selection) {
             case 1:
