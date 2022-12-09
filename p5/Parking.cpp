@@ -367,12 +367,14 @@ namespace sdds {
                     if (m_vehicalArray[i] == nullptr) {
                         tempVehicle->setParkingSpot(i + 1);
                         m_vehicalArray[i] = tempVehicle;
+                        m_SpotsAvailable--;
+                        m_spotsTaken++;
                         loopFlag = false;
                     }
                 }
 
                 cout << endl << "Parking Ticket" << endl;
-                tempVehicle->write();
+                tempVehicle->write();//
                 cout << endl << "Press <ENTER> to continue...." << endl;
             }
         }
