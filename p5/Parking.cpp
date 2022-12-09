@@ -27,84 +27,107 @@ namespace sdds {
         cout << "Return Vehicle" << endl;
         cout << "Enter License Plate Number: ";
         char temp[100];
-        do {    // gets license plate number
+        do {    // gets Licence plate number
             cin >> temp;
             if (ut.strlen(temp) <= 8) {
                 loopFlag = false;
             }
-            else { std::cout << "Invalid License Plate, try again: "; }
+            else { std::cout << "Invalid Licence Plate, try again: "; }
         } while (loopFlag); 
+
+        char tempCap[10];
+        int i;
+        for (i = 0; i < ut.strlen(temp); i++) {
+            tempCap[i] = ut.toupper(temp[i]);
+        }
+        tempCap[i] = '\0';
         
         loopFlag = true;
-        int i;
-        for (i = 0; i < maxSpots && loopFlag; i++) {    // seraches for the license plate
+        for (i = 0; i < maxSpots && loopFlag; i++) {    // seraches for the Licence plate
             if (m_vehicalArray[i] != nullptr) {
                 if (*m_vehicalArray[i] == temp) {
                     loopFlag = false;
-                    cout << "Returning:" << endl;
+                    cout << endl << "Returning:" << endl;
+                    m_vehicalArray[i]->setCsv(false);
                     m_vehicalArray[i]->write();
                     delete m_vehicalArray[i];
                     m_vehicalArray[i] = nullptr;
+                    m_spotsTaken--;
+                    m_SpotsAvailable++;
                 }
             }   
         }
 
         if (i == maxSpots) {    // makes sure that the plate was found
-            cout << "License plate " << temp << " Not found" << endl;
+            cout << endl << "License plate " << tempCap << " Not found" << endl;
         }
+
+        cout << endl << "Press <ENTER> to continue...." << endl;
     }
 
     void Parking::listParkedVehicals() {
+        cout << "*** List of parked vehicles ***";
         for (int i = 0; i < maxSpots; i++) {
             if (m_vehicalArray[i] != nullptr) {
+                cout << endl;
                 m_vehicalArray[i]->setCsv(false);
                 m_vehicalArray[i]->write();
-                cout << "-------------------------------" << endl;
+                cout << "-------------------------------";
             }
         }
+        cout << endl << "Press <ENTER> to continue...." << endl;
     }
 
     void Parking::findVehical() {
         cout << "Vehicle Search" << endl;
         bool loopFlag = true;
-        cout << "Enter License Plate Number: ";
-        char temp[100];
-        do {    // gets license plate number
+        cout << "Enter Licence Plate Number: ";
+        char temp[10];
+        do {    // gets Licence plate number
             cin >> temp;
             if (ut.strlen(temp) <= 8) {
                 loopFlag = false;
             }
-            else { std::cout << "Invalid License Plate, try again: "; }
+            else { std::cout << "Invalid Licence Plate, try again: "; }
         } while (loopFlag);
             
-        loopFlag = true;
+        char tempCap[10];
         int i;
-        for (i = 0; i < maxSpots && loopFlag; i++) {    // seraches for the license plate
+        for (i = 0; i < ut.strlen(temp); i++) {
+            tempCap[i] = ut.toupper(temp[i]);
+        }
+        tempCap[i] = '\0';
+
+        loopFlag = true;
+        for (i = 0; i < maxSpots && loopFlag; i++) {    // seraches for the Licence plate
             if (m_vehicalArray[i] != nullptr) {
-                if (*m_vehicalArray[i] == temp) {
+                if (*m_vehicalArray[i] == tempCap) {
                     loopFlag = false;
-                    cout << "Vechicle found:" << endl;
+                    cout << endl << "Vehicle found:" << endl;
                     m_vehicalArray[i]->setCsv(false);
                     m_vehicalArray[i]->write();
+                    cout << endl;
                 }
             }
         }
 
         if (i == maxSpots) {    // makes sure that the plate was found
-            cout << "License plate " << temp << " Not found" << endl;
+            cout << endl << "License plate " << tempCap << " Not found" << endl << endl;
         }
+
+        cout << "Press <ENTER> to continue...." << endl;
     }
 
     bool Parking::closeParking() {
         bool returnFlag = true;
         
-        if (m_isClassValid) {
-            cout << "Closing Parking" << endl;
+        if (!m_isClassValid) {
+            cout << "Closing Parking" << endl << endl;
         }
         else {
             char userSelection;
             bool flag1 = true;
-            cout << "This will close the parking; All the vehicles will be removed!" << endl;
+            cout << "This will Remove and tow all remaining vehicles from the parking!" << endl;
             cout << "Are you sure? (Y)es/(N)o: "; 
             do {
                 cin >> userSelection;
@@ -129,19 +152,19 @@ namespace sdds {
                 cout << "Closing Parking" << endl;
                 for (int i = 0; i < maxSpots; i++) { 
                     if (m_vehicalArray[i] != nullptr) {
+                        cout << endl;
                         cout << "Towing request" << endl;
                         cout << "*********************" << endl;
+                        m_vehicalArray[i]->setCsv(false);
                         m_vehicalArray[i]->write();
-                        cout << endl;
                         delete m_vehicalArray[i];
+                        m_vehicalArray[i] = nullptr;
                     }
                 }
                 returnFlag = true;
             }
         }
-
         return returnFlag;
-        
     }
 
     bool Parking::exitParkingApp() {
@@ -284,7 +307,6 @@ namespace sdds {
                     case 5:
                         if (closeParking()) {
                             flag1 = false;
-                            cout << "Ending application!" << endl;
                         }
                         break;
                     case 6:
@@ -340,7 +362,7 @@ namespace sdds {
                 tempVehicle->setCsv(false);
                 tempVehicle->read();
 
-                bool loopFlag = true;
+                bool loopFlag = true;  // finds a spot for the new vehical which is nullptr
                 for (int i = 0; i < maxSpots && loopFlag; i++) {
                     if (m_vehicalArray[i] == nullptr) {
                         tempVehicle->setParkingSpot(i + 1);
@@ -348,6 +370,10 @@ namespace sdds {
                         loopFlag = false;
                     }
                 }
+
+                cout << endl << "Parking Ticket" << endl;
+                tempVehicle->write();
+                cout << endl << "Press <ENTER> to continue...." << endl;
             }
         }
     }

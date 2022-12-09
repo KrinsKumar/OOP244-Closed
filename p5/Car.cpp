@@ -87,6 +87,7 @@ namespace sdds {
             else {
                 Vehicle::write(ostr);
                 if (m_carWash) ostr << "With Carwash" << std::endl;
+                else ostr << "Without Carwash" << std::endl;
             }
         }
         return ostr;
